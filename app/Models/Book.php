@@ -94,7 +94,7 @@ class Book extends Model
 
     protected static function booted()
     {
-        static::updated(fn(Review $review) => cache()->forget('book:'. $review->book_id));
-        static::deleted(fn(Review $review) => cache()->forget('book:'. $review->book_id));
+        static::updated(fn(Book $book) => cache()->forget('book:'. $book->id));
+        static::deleted(fn(Book $book) => cache()->forget('book:'. $book->id));
     }
 }
